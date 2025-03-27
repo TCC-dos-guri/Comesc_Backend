@@ -4,8 +4,17 @@ version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     {name = "luansilva25", email = "luansilva250807@gmail.com"},
+    {name = "renascm_", email = "renatochagas.m@gmail.com"},
 ]
-dependencies = ["django>=5.1.7", "django-cors-headers>=4.7.0", "python-magic>=0.4.27", "pillow>=11.1.0", "djangorestframework>=3.15.2", "djangorestframework-simplejwt>=5.5.0", "drf-spectacular>=0.28.0"]
+dependencies = [
+    "django>=5.1.7",
+    "django-cors-headers>=4.7.0",
+    "python-magic>=0.4.27",
+    "pillow>=11.1.0",
+    "djangorestframework>=3.15.2",
+    "djangorestframework-simplejwt>=5.5.0",
+    "drf-spectacular>=0.28.0",
+]
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
