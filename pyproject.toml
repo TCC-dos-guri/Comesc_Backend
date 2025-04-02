@@ -1,0 +1,28 @@
+[project]
+name = "Comesc_Backend"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "luansilva25", email = "luansilva250807@gmail.com"},
+]
+dependencies = ["django>=5.2", "djangorestframework>=3.16.0", "django-cors-headers>=4.7.0", "python-magic>=0.4.27", "pillow>=11.1.0"]
+requires-python = "==3.13.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+dev = "python src/manage.py runserver"
+createsuperuser = "python src/manage.py createsuperuser"
+pre_migrate = "python src/manage.py makemigrations"
+migrate = "python src/manage.py migrate"
+post_migrate = "python src/manage.py graph_models -g -o core.png core"
+shell = "python src/manage.py shell"
+shellp = "python src/manage.py shell_plus"
+test = "python src/manage.py test"
+loaddata = "python src/manage.py loaddata core.json"
+dumpdata = "python src/manage.py dumpdata --indent 2"
+startapp = "python src/manage.py startapp {args}"
