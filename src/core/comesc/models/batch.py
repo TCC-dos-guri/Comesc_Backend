@@ -6,7 +6,7 @@ class Batch(models.Model):
     qtd = models.IntegerField(default=12)
     kg = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     price = models.DecimalField(max_digits=7, decimal_places=2, default=0)
-    invoice = models.IntegerField()
+    invoice = models.IntegerField(default=000000)
 
     def __str__(self):
         return f'{self.supplier.name} - {self.qtd}'
