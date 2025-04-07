@@ -27,3 +27,14 @@ class Usuario(AbstractUser):
         verbose_name = "Usuário"
         verbose_name_plural = "Usuários"
         ordering = ["-date_joined"]
+
+class Worker(models.Model):
+    user = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='worker', default=None)
+    cod_worker = models.CharField(max_length=20)
+    class PositionChoices(models.TextChoices):
+        PROOFREADER = 'revisor', 'Revisor'
+        EXPEDITION = 'expedição', 'Expedição'
+    position = models.CharField(max_length=12, choices=PositionChoices.choices, default=PositionChoices.EXPEDITION)
+
+    def __str__(self):
+        return self.user.email
