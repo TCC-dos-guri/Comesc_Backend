@@ -5,4 +5,6 @@ from core.usuario import views
 app_name = "core.usuario"
 
 router = DefaultRouter()
-router.register("core.usuarios", views.UsuarioViewSet)
+
+router.register("usuarios", views.UsuarioViewSet)
+router.register('worker', views.WorkerViewSet)

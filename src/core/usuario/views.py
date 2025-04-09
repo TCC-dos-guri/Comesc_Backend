@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Usuario, Worker
-from .serializers import UsuarioSerializer
+from .serializers import UsuarioSerializer, WorkerSerializer
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import api_view
@@ -12,6 +12,11 @@ from django.views.decorators.csrf import csrf_exempt
 class UsuarioViewSet(ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+
+class WorkerViewSet(ModelViewSet):
+    queryset = Worker.objects.all()
+    serializer_class = WorkerSerializer
+
 
 
 def worker(req, token):
