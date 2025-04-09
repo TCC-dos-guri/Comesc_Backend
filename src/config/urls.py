@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from core.usuario.views import worker, get_user_confirmation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('worker/<str:token>/', worker),
+    path('worker/confirmation/<str:token>/', get_user_confirmation)
 ]

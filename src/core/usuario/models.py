@@ -1,7 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .send_email import send
+import uuid
 from .managers import CustomUserManager
 
 
@@ -13,6 +16,7 @@ class Usuario(AbstractUser):
     data_nascimento = models.DateField(
         _("Birth Date"), auto_now=False, auto_now_add=False, blank=True, null=True
     )
+    token = models.CharField(max_length=255, unique=True, default=None, null=True, blank=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -38,3 +42,17 @@ class Worker(models.Model):
 
     def __str__(self):
         return self.user.email
+    
+@receiver(post_save, sender=Worker)
+def accept_worker(instance, sender, created, **kwargs):
+    if created: 
+        user = Usuario.objects.get(email=instance.user)
+        try:
+            token = str(uuid.uuid4())
+            user.token = token
+            user.save()
+            send(instance, token)
+        except Usuario.DoesNotExist as e:
+            return Exception(f'error: {str(e)}')
+
+    
