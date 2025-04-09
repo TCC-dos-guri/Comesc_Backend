@@ -6,5 +6,6 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 router.register(r'color', views.ColorViewSet)
+router.register(r'state', views.StateViewSet)
 router.registry.extend(user_router.registry)
 router.registry.extend(uploader_router.registry)
