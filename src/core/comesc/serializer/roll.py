@@ -4,7 +4,7 @@ from rest_framework import serializers
 class RollCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Roll
-        fields = ['ordem_producao', 'color', 'materiaç', 'kg', 'batch', 'status']
+        fields = ['ordem_producao', 'color', 'material', 'kg', 'batch', 'status']
 
 class RollSerializer(serializers.ModelSerializer):
     class Meta:
