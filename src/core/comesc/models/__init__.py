@@ -5,3 +5,4 @@ from .roll import Roll
 from .material import Material
 from .supplier import Supplier
 from .batch import Batch
+from .inventory import Inventory
