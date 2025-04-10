@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
+router.register(r'address', views.AddressViewSet)
 router.register(r'color', views.ColorViewSet)
 router.register(r'state', views.StateViewSet)
 router.registry.extend(user_router.registry)
