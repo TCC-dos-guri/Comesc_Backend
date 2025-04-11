@@ -1,7 +1,7 @@
 from django.db import models
 
-from usuario.models import Usuario as User
-from __init__ import Roll
+from ...usuario.models import Usuario as User
+from . import Roll
 
 class Inventory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
