@@ -9,6 +9,7 @@ router.register(r'address', views.AddressViewSet)
 router.register(r'color', views.ColorViewSet)
 router.register(r'state', views.StateViewSet)
 router.register(r'supplier', views.SupplierViewSet)
+router.register(r'batch', views.BatchViewSet)
 
 router.register(r'roll', views.RollViewSet)
 router.registry.extend(user_router.registry)
