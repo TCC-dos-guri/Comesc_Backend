@@ -7,6 +7,13 @@ class Batch(models.Model):
     kg = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     price = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     invoice = models.IntegerField(default=000000)
+    class Status(models.TextChoices):
+        PENDENTE = 'pendente', "Pendente"
+        EM_ESTOQUE = 'em estoque', "Em estoque"
+        COM_DEFEITO = 'com defeito', "Com defeito"
+        EM_TRANSPORTE = 'em transporte', "Em transporte"
 
+    status = models.CharField(max_length=15, choices=Status.choices, default=Status.PENDENTE)
+    
     def __str__(self):
         return f'{self.supplier.name} - {self.qtd}'
