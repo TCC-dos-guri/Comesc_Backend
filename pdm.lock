@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:18e707472ab19f933dd37ae1ae0339d74984da88ed50d2d96b7b5438c5605f33"
+content_hash = "sha256:e89100b1ed874a8fdeaf019a45247d22ffd5e98999e699e54b2af36805b94c28"
 
 [[metadata.targets]]
 requires_python = "==3.13.*"
@@ -110,6 +110,32 @@ dependencies = [
 ]
 files = [
     {file = "dotenv-0.9.9-py2.py3-none-any.whl", hash = "sha256:29cf74a087b31dafdb5a446b6d7e11cbce8ed2741540e2339c69fbef92c94ce9"},
+]
+
+[[package]]
+name = "gunicorn"
+version = "23.0.0"
+requires_python = ">=3.7"
+summary = "WSGI HTTP Server for UNIX"
+groups = ["default"]
+dependencies = [
+    "importlib-metadata; python_version < \"3.8\"",
+    "packaging",
+]
+files = [
+    {file = "gunicorn-23.0.0-py3-none-any.whl", hash = "sha256:ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d"},
+    {file = "gunicorn-23.0.0.tar.gz", hash = "sha256:f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec"},
+]
+
+[[package]]
+name = "packaging"
+version = "25.0"
+requires_python = ">=3.8"
+summary = "Core utilities for Python packages"
+groups = ["default"]
+files = [
+    {file = "packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484"},
+    {file = "packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f"},
 ]
 
 [[package]]
