@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from core.usuario.views import worker, get_user_confirmation
 from .router import router
+from rest_framework_simplejwt.views import ( TokenObtainPairView, TokenRefreshView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('worker/<str:token>/', worker),
-    path('worker/confirmation/<str:token>/', get_user_confirmation),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include(router.urls))
-    
 ]
