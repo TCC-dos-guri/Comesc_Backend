@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core.uploader',
     'core.usuario',
     'rest_framework',
+    "rest_framework_simplejwt",
     'corsheaders'
 ]
 
@@ -53,7 +54,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = 'config.urls'
