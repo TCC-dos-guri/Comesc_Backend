@@ -8,7 +8,7 @@ class Address(models.Model):
     state = models.ForeignKey(State, on_delete=models.PROTECT, default=None, related_name='address')
 
     def __str__(self):
-        return f'street:{self.street} - {self.number is not None if self.number else ''} - {self.state}'
+        return f'street:{self.street} - {self.number is not None if self.number else ""} - {self.state}'
     
     class Meta:
         verbose_name = 'Address'
