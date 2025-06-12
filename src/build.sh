@@ -4,10 +4,10 @@ set -o errexit
 pip install --upgrade pip
 
 # Instala as dependências
-pip install -r ./requirements.txt
+pip install -r requirements.txt
 
 # Coleta os arquivos estáticos
-python src/manage.py collectstatic --no-input
+python manage.py collectstatic --no-input
 
 # Aplica as migrações
-python src/manage.py migrate
+python manage.py migrate
