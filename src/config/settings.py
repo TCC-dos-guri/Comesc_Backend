@@ -64,7 +64,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://comesc-frontend-vs4p.vercel.app/"
+    "https://comesc-frontend-vs4p.vercel.app"
 ]
 
 ROOT_URLCONF = 'config.urls'
