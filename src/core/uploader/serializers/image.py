@@ -1,8 +1,15 @@
 from rest_framework import serializers
-
+import cloudinary
+from cloudinary import uploader
+from django.conf import settings
 from core.uploader.helpers.files import CONTENT_TYPE_JPG, CONTENT_TYPE_PNG
 from core.uploader.models import Image
 
+cloudinary.config(
+    cloud_name=settings.CLOUD_NAME,
+    api_key=settings.CLOUD_API_KEY,
+    api_secret=settings.CLOUD_API_SECRET
+)
 
 class ImageUploadSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,6 +18,7 @@ class ImageUploadSerializer(serializers.ModelSerializer):
         read_only_fields = ["attachment_key", "uploaded_on", "url"]
         extra_kwargs = {"file": {"write_only": True}}
 
+   
     def validate_file(self, value):
         valid_content_types = [CONTENT_TYPE_JPG, CONTENT_TYPE_PNG]
         if value.content_type not in valid_content_types:

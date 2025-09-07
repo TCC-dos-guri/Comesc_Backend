@@ -93,15 +93,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 
-# DATABASES = {
-#        'default': dj_database_url.config(
-#            default='sqlite:///db.sqlite3',
-#            conn_max_age=600,
-#            conn_health_checks=True,
-#        )
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-DATABASES = {'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"), conn_max_age=600, ssl_require=True), }
+#DATABASES = {'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"), conn_max_age=600, ssl_require=True), }
 
 
 
@@ -156,3 +155,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'luansilva250807@gmail.com'
 EMAIL_HOST_PASSWORD = 'mgdy tuuy jmtk jcly'
+
+CLOUD_NAME = 'dphjceuwh'
+CLOUD_API_KEY='668476489743417'
+CLOUD_API_SECRET='NogHvjkmW9XR2gVzBRqI07VOplo'

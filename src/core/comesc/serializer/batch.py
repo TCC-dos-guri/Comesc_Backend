@@ -1,12 +1,32 @@
 from rest_framework import serializers
 from core.comesc.models import Batch
+from core.comesc.serializer import RollSerializer
+from core.uploader.serializers import ImageUploadSerializer
+from core.uploader.models import Image
+from core.comesc.models import Roll
 
 class BatchCreateSerializer(serializers.ModelSerializer):
+    roll = RollSerializer(many=True)
+    cover = serializers.SlugRelatedField(
+        slug_field='attachment_key',
+        queryset=Image.objects.all()
+    )
     class Meta:
         model = Batch
-        fields = ['id', 'supplier', 'color', 'material', 'kg', 'roll']
+        fields = ['id', 'supplier', 'material', 'composition', 'invoice', 'kg', 'roll', 'cover']
+
+    def create(self, validated_data):
+        rolls_data = validated_data.pop('roll')
+
+        batch = Batch.objects.create(**validated_data)
+
+        for roll_data in rolls_data:
+            Roll.objects.create(batch=batch, **roll_data)
+
+        return batch
         
 class BatchSerializer(serializers.ModelSerializer):
+    cover = ImageUploadSerializer()
     class Meta:
         model = Batch
         fields = '__all__'
