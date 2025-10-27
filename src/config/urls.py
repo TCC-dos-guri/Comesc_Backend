@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core.usuario.views import worker, get_user_confirmation
+from core.comesc.views.report import ReportView
 from .router import router
 from rest_framework_simplejwt.views import ( TokenObtainPairView, TokenRefreshView)
 
@@ -24,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/report/<int:id>', ReportView.as_view(), name='report'),
     path('api/', include(router.urls))
 ]
