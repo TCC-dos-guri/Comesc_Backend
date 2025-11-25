@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.usuario.views import worker, get_user_confirmation
 from core.comesc.views.report import ReportView
 from .router import router
 from rest_framework_simplejwt.views import ( TokenObtainPairView, TokenRefreshView)

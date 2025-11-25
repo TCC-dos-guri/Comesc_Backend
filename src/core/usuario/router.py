@@ -7,4 +7,3 @@ app_name = "core.usuario"
 router = DefaultRouter()
 
 router.register("usuarios", views.UsuarioViewSet)
-router.register('worker', views.WorkerViewSet)
