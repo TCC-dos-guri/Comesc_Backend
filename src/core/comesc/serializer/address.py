@@ -1,10 +1,17 @@
+from rest_framework import serializers
 from core.comesc.models import Address
-from rest_framework.serializers import ModelSerializer, SlugRelatedField
 from .state import StateSerializer
 
-class AddressSerializer(ModelSerializer):
-    state = StateSerializer()
+class AddressSerializer(serializers.ModelSerializer):
+    # Para leitura, mostra o objeto completo
+    state = StateSerializer(read_only=True)
+    # Para escrita, recebe apenas o ID
+    state_id = serializers.PrimaryKeyRelatedField(
+        queryset=StateSerializer.Meta.model.objects.all(),
+        source='state',  
+        write_only=True
+    )
+
     class Meta:
         model = Address
-        fields = '__all__'
-
+        fields = ['id', 'street', 'cep', 'number', 'state', 'state_id']
