@@ -31,3 +31,14 @@ class SupplierSerializer(serializers.ModelSerializer):
         model = Supplier
         fields = '__all__'
         depth = 2
+
+class SupplierUpdateSerializer(serializers.ModelSerializer):
+    address_id = serializers.PrimaryKeyRelatedField(
+        queryset=Address.objects.all(),
+        source='address',
+        required=False
+    )
+
+    class Meta:
+        model = Supplier
+        fields = ['id', 'name', 'cnpj', 'address_id']
